@@ -22,4 +22,11 @@ export class GithubService {
     const url = `https://api.github.com/users/${usr}`
     return this.http.get<any>(url)
   }
+
+  getDetails(id) {
+    const url = `https://api.github.com/users/${id}`
+    return this.http.get<any>(url)
+  }
+
+
 }

@@ -14,18 +14,21 @@ export class AppComponent {
   users:Users[] = [];
   repos:Repos[] = [];
   customRepos:Repos[] = [];
-  flag:Boolean = true;
+  flag:boolean = true;
 
   constructor(private githubService:GithubService){
-
+    
   }
 
   ngOnInit(): void {
-      Promise.all([this.getUsers(), this.getRepos()]).then((values) => {
-      console.log(values);
-    });
+    //   Promise.all([this.getUsers(), this.getRepos()]).then((values) => {
+    //   console.log(values);
+    // });
 
-    
+    this.getUsers();
+  }
+  flagChangedHandler(flag: boolean) {
+    this.flag = flag;
   }
   getUsers(){
     this.githubService.getUsers().subscribe((data)=>{
@@ -49,10 +52,11 @@ export class AppComponent {
           let numOfRepos = data.public_repos;
           let avatar_url = val.avatar_url;
           let id = data.id;
+          let login = data.login;
           console.log(FirstName+ '-' + LastName+'  -'+numOfRepos+' -'+avatar_url+"id"+id);
           console.log(numOfRepos);
 
-          this.customRepos.push(new Repos(FirstName, LastName, numOfRepos, avatar_url,id))
+          this.customRepos.push(new Repos(FirstName, LastName, numOfRepos, avatar_url, id, login))
           // console.log("==========================="+this.customRepos.length)
         }
         else

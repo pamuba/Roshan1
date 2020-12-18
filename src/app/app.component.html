@@ -9,7 +9,8 @@
   <!-- <h1>Github Users</h1>
   <button (click)="getUsers()">Get Users</button>
   <button (click)="getRepos()">Get Repos</button> -->
-  <app-users [customRepos]="customRepos" [users]="users"></app-users>
-  <router-outlet></router-outlet>
+  <app-users (flagChanged)="flagChangedHandler($event)" [flag]="flag" *ngIf="flag" [customRepos]="customRepos" [users]="users"></app-users>
+  <!-- <router-outlet [flag]="flag" *ngIf="!flag"></router-outlet> -->
+  <app-details-component (flagChanged)="flagChangedHandler($event)" [flag]="flag" *ngIf="!flag"></app-details-component>
 </body>
 </html>
