@@ -28,7 +28,7 @@ export class AppComponent {
   }
   getUsers(){
     this.githubService.getUsers().subscribe((data)=>{
-      
+  
       this.users = data
       this.getRepos()
     })
@@ -40,17 +40,18 @@ export class AppComponent {
         if(data.name != null){
 
           console.log(data);
-          console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$"+data.avatar_url);
+    
 
           let name = data.name.split(' ');
           let FirstName = name[0];
           let LastName = name[name.length-1] 
           let numOfRepos = data.public_repos;
           let avatar_url = val.avatar_url;
-          console.log(FirstName+ '-' + LastName+'  -'+numOfRepos+' -'+avatar_url);
+          let id = data.id;
+          console.log(FirstName+ '-' + LastName+'  -'+numOfRepos+' -'+avatar_url+"id"+id);
           console.log(numOfRepos);
 
-          this.customRepos.push(new Repos(FirstName, LastName, numOfRepos, avatar_url))
+          this.customRepos.push(new Repos(FirstName, LastName, numOfRepos, avatar_url,id))
           // console.log("==========================="+this.customRepos.length)
         }
         else
