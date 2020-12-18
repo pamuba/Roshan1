@@ -1,0 +1,28 @@
+<!-- <ul *ngFor="let user of users">
+    <img height="200" width="200" src="{{user.avatar_url}}" alt="" />
+</ul> -->
+
+<h1>Users Dashboard</h1>
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+
+            <th>Avatar</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th># of Repos</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let repo of customRepos">
+
+            <td><img height="50" width="50" src={{repo.avatar_url}} alt="" /></td>
+            <td>{{repo.FirstName}}</td>
+            <td>{{repo.LastName}}</td>
+            <td>{{repo.numOfRepos}}</td>
+            
+        </tr>
+    </tbody>
+</table>
