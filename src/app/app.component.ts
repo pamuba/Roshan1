@@ -19,11 +19,18 @@ export class AppComponent {
 
   }
 
+  ngOnInit(): void {
+      Promise.all([this.getUsers(), this.getRepos()]).then((values) => {
+      console.log(values);
+    });
+
+    
+  }
   getUsers(){
     this.githubService.getUsers().subscribe((data)=>{
       
       this.users = data
-      
+      this.getRepos()
     })
   }
   getRepos(){
@@ -32,6 +39,7 @@ export class AppComponent {
       this.githubService.getRepos(val.login).subscribe((data)=>{
         if(data.name != null){
 
+          console.log(data);
           console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$"+data.avatar_url);
 
           let name = data.name.split(' ');

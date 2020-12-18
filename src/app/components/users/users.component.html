@@ -16,7 +16,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let repo of customRepos">
+        <tr *ngFor="let repo of customRepos | paginate:{itemsPerPage:10, currentPage:p};">
 
             <td><img height="50" width="50" src={{repo.avatar_url}} alt="" /></td>
             <td>{{repo.FirstName}}</td>
@@ -25,4 +25,5 @@
             
         </tr>
     </tbody>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </table>

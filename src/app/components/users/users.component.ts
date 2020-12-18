@@ -11,6 +11,7 @@ export class UsersComponent implements OnInit {
 
   @Input() users:Users[]
   @Input() customRepos:Repos[]
+  p:number = 1;
 
   constructor() { }
 
