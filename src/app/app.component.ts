@@ -14,6 +14,7 @@ export class AppComponent {
   users:Users[] = [];
   repos:Repos[] = [];
   customRepos:Repos[] = [];
+  flag:Boolean = true;
 
   constructor(private githubService:GithubService){
 
